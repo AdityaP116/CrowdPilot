@@ -11,3 +11,5 @@ cloudbuild.yaml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# Exclude Windows-generated lockfile to prevent cross-platform rollup native binary issues
+package-lock.json
