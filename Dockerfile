@@ -4,8 +4,12 @@ FROM node:20-slim AS build
 WORKDIR /app
 
 # Copy package files and install dependencies
+# Remove any Windows-generated lockfile to prevent cross-platform rollup native module issues
 COPY package*.json ./
-RUN npm install
+RUN rm -f package-lock.json && npm install
+# Explicitly install Linux rollup native binary (fixes npm optional dep bug on cross-platform builds)
+RUN node -e "require('@rollup/rollup-linux-x64-gnu')" 2>/dev/null || \
+    npm install @rollup/rollup-linux-x64-gnu --no-save --ignore-scripts
 
 # Copy source code and build
 COPY . .
