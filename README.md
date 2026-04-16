@@ -146,6 +146,9 @@ This will:
 | Memory (Cloud Run) | 2Gi |
 | CPU (Cloud Run) | 2 |
 
+### Troubleshooting
+- **Rollup Linux Error**: If you see an error regarding `@rollup/rollup-linux-x64-gnu` during deployment, this is typically due to cross-platform lockfile conflicts. This issue has been patched in the current `Dockerfile` by automatically removing the Windows-generated `package-lock.json` and forcefully installing the Linux Rollup binary during the CI/CD build.
+
 ---
 
 ## 📁 Project Structure
