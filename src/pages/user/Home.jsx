@@ -20,7 +20,7 @@ export default function Home() {
   const topAlerts = alerts.filter(a => a.severity === 'high').slice(0, 2);
 
   return (
-    <div className="page" style={{ paddingBottom: '6rem' }}>
+    <div className="page">
       {/* ── Hero Profile ── */}
       <div className="fade-in" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem', paddingTop: '0.5rem' }}>
         <div>
@@ -47,56 +47,60 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── Dynamic Hero Status ── */}
-      <div className="fade-in fade-in-1 card" style={{
-        marginBottom: '1.5rem',
-        border: `1px solid ${STATUS_COLORS[overallStatus]}30`,
-        background: `linear-gradient(145deg, var(--bg-card), ${STATUS_BG[overallStatus]})`,
-        boxShadow: `0 12px 35px ${STATUS_BG[overallStatus]}`,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between'
-      }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <div className={`pulse-dot pulse-dot-${overallStatus.toLowerCase() === 'moderate' ? 'medium' : overallStatus.toLowerCase()}`} />
-            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Live Crowd Density</span>
-          </div>
-          <div style={{ fontSize: '2.5rem', fontWeight: 800, color: STATUS_COLORS[overallStatus], lineHeight: 1 }}>
-            {overallStatus}
-          </div>
-        </div>
-        <div style={{
-          width: 75, height: 75,
-          borderRadius: '50%',
-          background: 'var(--bg-primary)',
-          border: `3px solid ${STATUS_COLORS[overallStatus]}80`,
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0,
-          boxShadow: `inset 0 4px 12px rgba(0,0,0,0.5)`,
+      {/* ── Desktop Hero Layout — sidebar stat cards + big status ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.5fr) minmax(0,1fr)', gap: '1.5rem', marginBottom: '2rem', alignItems: 'start' }}>
+        {/* Status card */}
+        <div className="fade-in fade-in-1 card" style={{
+          border: `1px solid ${STATUS_COLORS[overallStatus]}30`,
+          background: `linear-gradient(145deg, var(--bg-card), ${STATUS_BG[overallStatus]})`,
+          boxShadow: `0 12px 35px ${STATUS_BG[overallStatus]}`,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '2rem',
         }}>
-          <span style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>
-            {avgDensity}%
-          </span>
-          <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>Avg Cap</span>
-        </div>
-      </div>
-
-      {/* ── Quick Stats Row ── */}
-      <div className="fade-in fade-in-2 grid-3" style={{ marginBottom: '1.75rem' }}>
-        {[
-          { icon: Shield,     label: 'Safe', value: lowCount,      color: 'var(--color-low)'    },
-          { icon: Users,      label: 'Zones', value: zones.length, color: 'var(--accent-light)' },
-          { icon: TrendingUp, label: 'Alerts',  value: highCount,    color: 'var(--color-high)'   },
-        ].map(({ icon: Icon, label, value, color }) => (
-          <div key={label} className="card" style={{ padding: '1rem', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-            <div style={{ background: `${color}15`, padding: '0.5rem', borderRadius: '50%' }}>
-              <Icon size={20} color={color} />
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <div className={`pulse-dot pulse-dot-${overallStatus.toLowerCase() === 'moderate' ? 'medium' : overallStatus.toLowerCase()}`} />
+              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Live Crowd Density</span>
             </div>
-            <div>
-              <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{value}</div>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.2rem' }}>{label}</div>
+            <div style={{ fontSize: '3rem', fontWeight: 800, color: STATUS_COLORS[overallStatus], lineHeight: 1 }}>
+              {overallStatus}
+            </div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+              {avgDensity}% average capacity across all zones
             </div>
           </div>
-        ))}
+          <div style={{
+            width: 90, height: 90,
+            borderRadius: '50%',
+            background: 'var(--bg-primary)',
+            border: `3px solid ${STATUS_COLORS[overallStatus]}80`,
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            flexShrink: 0,
+            boxShadow: `inset 0 4px 12px rgba(0,0,0,0.5), 0 0 30px ${STATUS_COLORS[overallStatus]}20`,
+          }}>
+            <span style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{avgDensity}%</span>
+            <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>Avg Cap</span>
+          </div>
+        </div>
+
+        {/* Sidebar stats */}
+        <div className="fade-in fade-in-2" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {[
+            { icon: Shield,     label: 'Safe Zones',    value: lowCount,      color: 'var(--color-low)'    },
+            { icon: Users,      label: 'Total Zones',   value: zones.length,  color: 'var(--accent-light)' },
+            { icon: TrendingUp, label: 'Active Alerts', value: highCount,     color: 'var(--color-high)'   },
+          ].map(({ icon: Icon, label, value, color }) => (
+            <div key={label} className="card" style={{ padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{ background: `${color}15`, padding: '0.6rem', borderRadius: '10px' }}>
+                <Icon size={22} color={color} />
+              </div>
+              <div>
+                <div style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{value}</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.2rem' }}>{label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* ── Best Route Banner ── */}

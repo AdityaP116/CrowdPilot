@@ -11,7 +11,7 @@ export default function Alerts() {
   const infoAlerts   = alerts.filter(a => a.severity === 'info');
 
   return (
-    <div className="page" style={{ paddingBottom: '6rem' }}>
+    <div className="page">
       {/* ── Header ── */}
       <div className="fade-in" style={{ paddingTop: '0.5rem', marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.45rem' }}>
@@ -42,7 +42,7 @@ export default function Alerts() {
             <AlertTriangle size={16} color="var(--color-high)" />
             <div className="section-title" style={{ margin: 0, color: 'var(--color-high)', fontSize: '0.8rem' }}>Critical System Alerts</div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '1rem' }}>
             {highAlerts.map(a => <AlertBadge key={a.id} alert={a} />)}
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function Alerts() {
             <AlertTriangle size={16} color="var(--color-medium)" />
             <div className="section-title" style={{ margin: 0, color: 'var(--color-medium)', fontSize: '0.8rem' }}>Zone Warnings</div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '1rem' }}>
             {mediumAlerts.map(a => <AlertBadge key={a.id} alert={a} />)}
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Alerts() {
             <ShieldCheck size={16} color="var(--accent-light)" />
             <div className="section-title" style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Information & Updates</div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '1rem' }}>
             {infoAlerts.map(a => <AlertBadge key={a.id} alert={a} />)}
           </div>
         </div>

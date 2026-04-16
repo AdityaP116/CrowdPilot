@@ -43,34 +43,15 @@ function AdminSidebar({ activeTab, setActiveTab }) {
 
   return (
     <aside className="admin-sidebar" style={{ background: 'var(--bg-secondary)' }}>
-      {/* Logo */}
-      <div style={{ padding: '0.5rem 0.5rem 1.5rem', borderBottom: '1px solid var(--border-card)', marginBottom: '0.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <div style={{
-            width: 36, height: 36,
-            background: 'linear-gradient(135deg, var(--accent), var(--accent-dark))',
-            borderRadius: '10px',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 12px var(--accent-glow)'
-          }}>
-            <Activity size={18} color="#fff" />
-          </div>
-          <div>
-            <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.02em' }}>CrowdPulse</div>
-            <div style={{ fontSize: '0.65rem', color: 'var(--accent-light)', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>Admin Console</div>
-          </div>
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         {navItems.map(({ id, icon: Icon, label }) => (
           <button
             key={id}
             onClick={() => setActiveTab(id)}
             className={`sidebar-item ${activeTab === id ? 'active' : ''}`}
             style={{ 
-              background: activeTab === id ? 'var(--bg-glass)' : 'transparent',
-              border: activeTab === id ? '1px solid var(--border)' : '1px solid transparent', 
+              background: activeTab === id ? 'var(--color-low-bg)' : 'transparent',
+              border: activeTab === id ? '1px solid var(--accent)' : '1px solid transparent', 
               width: '100%', textAlign: 'left', padding: '0.75rem 1rem' 
             }}
           >

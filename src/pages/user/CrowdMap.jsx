@@ -11,7 +11,7 @@ export default function CrowdMap() {
   const selected = selectedZone ? zones.find(z => z.id === selectedZone) : null;
 
   return (
-    <div className="page" style={{ paddingBottom: '6rem' }}>
+    <div className="page">
       {/* ── Header ── */}
       <div className="fade-in" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', paddingTop: '0.5rem' }}>
         <div>
@@ -68,7 +68,7 @@ export default function CrowdMap() {
 
       {/* ── All Zones List ── */}
       <div className="section-title fade-in fade-in-3">All Zones Monitor</div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
         {[...zones].sort((a, b) => b.density - a.density).map((zone, i) => (
           <div key={zone.id} className={`fade-in fade-in-${Math.min(i + 3, 5)}`}>
             <ZoneCard zone={zone} highlight={zone.id === selectedZone} onClick={() => setSelectedZone(zone.id === selectedZone ? null : zone.id)} />

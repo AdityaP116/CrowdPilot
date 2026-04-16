@@ -20,7 +20,7 @@ export default function QueueStatus() {
   ];
 
   return (
-    <div className="page" style={{ paddingBottom: '6rem' }}>
+    <div className="page">
       {/* ── Header ── */}
       <div className="fade-in" style={{ paddingTop: '0.5rem', marginBottom: '1.75rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
@@ -71,7 +71,7 @@ export default function QueueStatus() {
               <CatIcon size={16} color="var(--text-muted)" />
               <div className="section-title" style={{ margin: 0, fontSize: '0.8rem' }}>{cat.label}</div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1rem' }}>
               {items.map((q) => {
                 const color = getDensityColor(q.density);
                 const isJoined = joined[q.id];
