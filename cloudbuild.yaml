@@ -1,11 +1,11 @@
 steps:
   # 1. Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/crowdpilot', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-lib/crowdpilot', '.']
 
-  # 2. Push the container image to Container Registry
+  # 2. Push the container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/crowdpilot']
+    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-lib/crowdpilot']
 
   # 3. Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,13 +15,27 @@ steps:
       - 'deploy'
       - 'crowdpilot'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/crowdpilot'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-lib/crowdpilot'
       - '--region'
       - 'us-central1'
       - '--allow-unauthenticated'
+      - '--platform'
+      - 'managed'
+      - '--memory'
+      - '2Gi'
+      - '--cpu'
+      - '2'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '10'
 
 images:
-  - 'gcr.io/$PROJECT_ID/crowdpilot'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-lib/crowdpilot'
 
 options:
-  machineType: 'E2_HIGHCPU_8'
+  machineType: 'E2_HIGHCPU_32'
+  logging: CLOUD_LOGGING_ONLY
+  diskSizeGb: '100'
+
+timeout: '3600s'
