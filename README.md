@@ -39,11 +39,14 @@ CrowdPilot provides **live stadium heatmaps**, **queue wait times**, and **crowd
 - 📋 **Live Zone Monitor Table** — Sortable, scrollable zone list with density bars
 - 🔄 **Manual Sync** — Force data refresh on demand
 
-### Platform
+### Platform & Architecture
 - 💻 **Fully Responsive Web App** — Desktop, tablet, and mobile
 - 🍔 **Hamburger Menu** — Smooth slide-in navigation on mobile
 - 🌑 **Dark Mode Design** — Glassmorphism, gradients, and micro-animations
 - 📡 **Live Simulated Data** — Auto-refreshing every few seconds
+- ♿ **WCAG Accessible** — Semantic roles, labels, and AAA-level readable contrast across the spectrum
+- ✔️ **Robust Core Testing** — Full coverage of core pathways via Vitest & React Testing Library
+- ☁️ **Google Services Integration** — Native tracking hooks & Firebase application layer integrations
 
 ---
 
@@ -52,6 +55,8 @@ CrowdPilot provides **live stadium heatmaps**, **queue wait times**, and **crowd
 | Layer | Technology |
 |---|---|
 | Frontend | React 18, React Router DOM 6 |
+| Testing | Vitest, React Testing Library, Happy-DOM |
+| Telemetry | Google Analytics (GTag), Firebase Web SDK |
 | Charts | Recharts |
 | Icons | Lucide React |
 | Build Tool | Vite 5 |
