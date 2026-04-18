@@ -46,6 +46,7 @@ export default function WebNavbar({ alertCount = 0 }) {
               key={to} 
               to={to} 
               className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} ${isAdmin ? 'admin-btn' : ''}`}
+              aria-current={location.pathname === to ? 'page' : undefined}
             >
               <Icon size={18} />
               <span>{label}</span>
@@ -58,8 +59,8 @@ export default function WebNavbar({ alertCount = 0 }) {
 
         {/* Mobile Actions */}
         <div className="nav-actions-mobile">
-          <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <button className="menu-toggle" aria-label="Toggle mobile menu" aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -73,6 +74,7 @@ export default function WebNavbar({ alertCount = 0 }) {
               to={to} 
               className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
               onClick={() => setIsOpen(false)}
+              aria-current={location.pathname === to ? 'page' : undefined}
             >
               <Icon size={22} />
               <span>{label}</span>

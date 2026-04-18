@@ -54,7 +54,8 @@ export default function CrowdMap() {
       )}
 
       {/* ── SVG Map ── */}
-      <div className="fade-in fade-in-2" style={{ marginBottom: '2rem' }}>
+      <h2 id="stadium-map-heading" className="sr-only" style={{ display: 'none' }}>Live Stadium Map</h2>
+      <div className="fade-in fade-in-2" style={{ marginBottom: '2rem' }} role="region" aria-labelledby="stadium-map-heading">
         <StadiumMap zones={zones} bestGateId={bestGate?.id} onZoneClick={z => setSelectedZone(z.id === selectedZone ? null : z.id)} />
       </div>
 
@@ -67,8 +68,8 @@ export default function CrowdMap() {
       )}
 
       {/* ── All Zones List ── */}
-      <div className="section-title fade-in fade-in-3">All Zones Monitor</div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
+      <h2 id="zones-list-heading" className="section-title fade-in fade-in-3">All Zones Monitor</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }} role="region" aria-labelledby="zones-list-heading">
         {[...zones].sort((a, b) => b.density - a.density).map((zone, i) => (
           <div key={zone.id} className={`fade-in fade-in-${Math.min(i + 3, 5)}`}>
             <ZoneCard zone={zone} highlight={zone.id === selectedZone} onClick={() => setSelectedZone(zone.id === selectedZone ? null : zone.id)} />

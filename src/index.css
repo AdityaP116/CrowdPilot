@@ -24,7 +24,7 @@
   /* ── Text ────────────────────────────────────── */
   --text-primary: #F8FAFC;
   --text-secondary: #CBD5E1;
-  --text-muted: #64748B;
+  --text-muted: #94A3B8;
 
   /* ── Borders ─────────────────────────────────── */
   --border: rgba(99, 102, 241, 0.2);
@@ -146,6 +146,10 @@ p { line-height: 1.6; }
   transition: var(--transition);
   text-decoration: none;
   white-space: nowrap;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
 }
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
@@ -309,6 +313,10 @@ p { line-height: 1.6; }
   font-weight: 600;
   transition: var(--transition);
   position: relative;
+}
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 1px;
 }
 .nav-link:hover {
   background: var(--bg-glass-light);
