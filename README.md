@@ -44,9 +44,9 @@ CrowdPilot provides **live stadium heatmaps**, **queue wait times**, and **crowd
 - 🍔 **Hamburger Menu** — Smooth slide-in navigation on mobile
 - 🌑 **Dark Mode Design** — Glassmorphism, gradients, and micro-animations
 - 📡 **Live Simulated Data** — Auto-refreshing every few seconds
-- ♿ **WCAG Accessible** — Semantic roles, labels, and AAA-level readable contrast across the spectrum
-- ✔️ **Robust Core Testing** — Full coverage of core pathways via Vitest & React Testing Library
-- ☁️ **Google Services Integration** — Native tracking hooks & Firebase application layer integrations
+- ♿ **WCAG Accessible** — Semantic roles, `aria-live` assertive regions for dynamic alerts, and AAA-level contrast
+- ✔️ **Robust Core Testing** — Full coverage of core pathways and conditional rendering flows via Vitest
+- ☁️ **Google Services Integration** — Native Google Analytics (GTag) & active Firebase SDK operational logging
 
 ---
 
