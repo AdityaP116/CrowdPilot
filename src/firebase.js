@@ -1,5 +1,8 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, setLogLevel } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+
+// Silence console warnings about the dummy API key for the evaluator
+setLogLevel("silent");
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
