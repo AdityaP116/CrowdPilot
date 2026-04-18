@@ -37,7 +37,7 @@ export default function Alerts() {
 
       {/* ── Critical Alerts ── */}
       {highAlerts.length > 0 && (
-        <div className="fade-in fade-in-1" style={{ marginBottom: '2rem' }}>
+        <div className="fade-in fade-in-1" style={{ marginBottom: '2rem' }} aria-live="assertive">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
             <AlertTriangle size={16} color="var(--color-high)" />
             <div className="section-title" style={{ margin: 0, color: 'var(--color-high)', fontSize: '0.8rem' }}>Critical System Alerts</div>
@@ -50,7 +50,7 @@ export default function Alerts() {
 
       {/* ── Warning Alerts ── */}
       {mediumAlerts.length > 0 && (
-        <div className="fade-in fade-in-2" style={{ marginBottom: '2rem' }}>
+        <div className="fade-in fade-in-2" style={{ marginBottom: '2rem' }} aria-live="polite">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
             <AlertTriangle size={16} color="var(--color-medium)" />
             <div className="section-title" style={{ margin: 0, color: 'var(--color-medium)', fontSize: '0.8rem' }}>Zone Warnings</div>

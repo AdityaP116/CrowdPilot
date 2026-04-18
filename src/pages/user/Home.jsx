@@ -170,7 +170,7 @@ export default function Home() {
 
       {/* ── Live Alerts Preview ── */}
       {topAlerts.length > 0 && (
-        <div className="fade-in fade-in-5">
+        <div className="fade-in fade-in-5" aria-live="polite">
           <div className="section-title">⚠ Critical Live Alerts</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {topAlerts.map(a => <AlertBadge key={a.id} alert={a} compact />)}
